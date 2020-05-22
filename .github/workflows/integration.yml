@@ -29,9 +29,11 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspeclib/mlspeclib-action-sample-package
+          repository: mlspec/mlspeclib-action-sample-package
           tag_with_ref: True
           tag_with_sha: True
+          username: ${{ secrets.DOCKERUSERNAME }}
+          password: ${{ secrets.DOCKERPASSWORD }}
           push: False
 
 #      - name: Debugging with tmate
@@ -55,7 +57,9 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspeclib/mlspeclib-action-sample-package
+          repository: mlspec/mlspeclib-action-sample-package
           tag_with_ref: True
           tag_with_sha: True
+          username: ${{ secrets.DOCKERUSERNAME }}
+          password: ${{ secrets.DOCKERPASSWORD }}
           push: True
