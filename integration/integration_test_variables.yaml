@@ -1,0 +1,67 @@
+# Integration test variables
+INPUT_integration_tests_schemas_dir_name: 'integration/.parameters/schemas'
+
+# Variables to hand to the docker container to mock up a real run
+INPUT_container_repo_name: mlspec
+INPUT_container_name: mlspeclib-action-samples-package:latest
+INPUT_parameters_directory: '/src/parameters'
+INPUT_schemas_directory: '/src/parameters/test_schemas'
+INPUT_execution_parameters:
+  schema_version: 999.0.1
+  schema_type: package_run
+  model_source: /nfs/trained_models/nlp
+  container_registry: https://registry.hub.docker.com/v1/repositories/contoso
+  agent-pool: nlp-build-pool
+  build-args: ["arg1", "arg2", "arg3"]
+  secrets:
+    credentials: AZURE_CREDENTIALS
+    docker_username: DOCKERUSERNAME
+    docker_password: DOCKERPASSWORD
+INPUT_step_name: 'package'
+INPUT_workflow:
+  schema_type: workflow
+  schema_version: 999.0.1
+  steps:
+    process_data:
+      input:
+        schema_type: data_source
+        schema_version: 999.0.1
+      execution:
+        schema_type: data_process_run
+        schema_version: 999.0.1
+      output:
+        schema_type: data_result
+        schema_version: 999.0.1
+      next: train
+    train:
+      previous: process_data
+      input:
+        schema_type: data_result
+        schema_version: 999.0.1
+      execution:
+        schema_type: training_run
+        schema_version: 999.0.1
+      output:
+        schema_type: training_result
+        schema_version: 999.0.1
+    package:
+      previous: train
+      input:
+        schema_type: training_result
+        schema_version: 999.0.1
+      execution:
+        schema_type: package_run
+        schema_version: 999.0.1
+      output:
+        schema_type: package_result
+        schema_version: 999.0.1
+INPUT_input_parameters:
+  schema_version: 999.0.1
+  schema_type: training_result
+  run_id: 6a9a5931-1c1d-47cc-aaf3-ad8b03f70575
+  step_id: 77d56984-86dc-4668-8173-db2f401114b5
+  run_date: 1970-01-10 00:00:00.00000
+  training_execution_id: 8030a7a4-46d5-4e83-a636-186e3effe891
+  accuracy: 0.941412
+  global_step: 7500
+  loss: 0.0158121
