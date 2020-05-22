@@ -111,24 +111,24 @@ class E2ETester(unittest.TestCase):
                 environment_vars_list.append("-e")
                 environment_vars_list.append(f"{param}={env_value}")
 
-            exec_statement = [
-                "docker",
-                "pull",
-                f"{repo_name}/{container_name}",
-            ]
+            # exec_statement = [
+            #     "docker",
+            #     "pull",
+            #     f"{repo_name}/{container_name}",
+            # ]
 
-            print(
-                f"docker pull --no-cache {repo_name}/{container_name}"
-            )
-            # self.rootLogger.debug(f"exec_statement = {exec_statement}")
+            # print(
+            #     f"docker pull --no-cache {repo_name}/{container_name}"
+            # )
+            # # self.rootLogger.debug(f"exec_statement = {exec_statement}")
 
-            p = subprocess.Popen(
-                exec_statement, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-            )
-            out, err = p.communicate()
-            # self.rootLogger.debug(f"out = {str(out)}")
-            # self.rootLogger.debug(f"error = {str(err)}")
-            # self.assertTrue(str(err, "utf-8") == "")
+            # p = subprocess.Popen(
+            #     exec_statement, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            # )
+            # out, err = p.communicate()
+            # # self.rootLogger.debug(f"out = {str(out)}")
+            # # self.rootLogger.debug(f"error = {str(err)}")
+            # # self.assertTrue(str(err, "utf-8") == "")
 
             exec_statement = (
                 ["docker", "run"]
