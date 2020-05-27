@@ -1,4 +1,6 @@
 #!/bin/bash
+pipenv shell 
+
 CONTAINER_NAME='mlspec/mlspeclib-action-samples-package'
 
 pipenv update mlspeclib
