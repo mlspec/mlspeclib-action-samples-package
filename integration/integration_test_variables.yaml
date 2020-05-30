@@ -14,9 +14,9 @@ INPUT_EXECUTION_PARAMETERS_RAW:
   agent-pool: nlp-build-pool
   build-args: ["arg1", "arg2", "arg3"]
   secrets:
-    credentials: AZURE_CREDENTIALS
-    docker_username: DOCKERUSERNAME
-    docker_password: DOCKERPASSWORD
+    credentials: AZURE_CREDENTIALS_SECRET
+    docker_username: DOCKERUSERNAME_SECRET
+    docker_password: DOCKERPASSWORD_SECRET
 INPUT_STEP_NAME: 'package'
 INPUT_WORKFLOW:
   schema_type: workflow
