@@ -29,19 +29,13 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspec/mlspeclib-action-samples-package
-          tag_with_ref: True
-          tag_with_sha: True
+          repository: mlspec/mlspeclib-action-samples-train
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+          tag_with_ref: True
+          tag_with_sha: True
           push: False
-
-#      - name: Debugging with tmate
-#        id: tmate_debugging
-#        env:
-#          INPUT_METASTORE_CREDENTIALS: ${{ secrets.METASTORE_CREDENTIALS }}
-#        uses: mxschmitt/action-tmate@v2
-
+ 
       - name: Test Image
         id: test_image_e2e
         env:
@@ -57,9 +51,10 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspec/mlspeclib-action-samples-package
-          tag_with_ref: True
-          tag_with_sha: True
+          repository: mlspec/mlspeclib-action-samples-train
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+          tag_with_ref: True
+          tag_with_sha: True
           push: True
+  

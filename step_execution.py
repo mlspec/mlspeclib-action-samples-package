@@ -1,4 +1,4 @@
-import logging
+from utils import setupLogger
 from mlspeclib import MLObject
 import yaml as YAML
 
@@ -12,16 +12,16 @@ class StepExecution:
     def __init__(self, input_params, execution_params):
         self.input_params = input_params
         self.execution_params = execution_params
-        self.logger = logging.getLogger()
+        self.rootLogger = setupLogger().get_root_logger()
 
         # Execute all work in here.
 
         # Output input params & execution params
         if self.input_params is not None:
-            self.logger.debug(f"Input params: {self.input_params}")
+            self.rootLogger.debug(f"Input params: {self.input_params}")
 
         if self.execution_params is not None:
-            self.logger.debug(f"Execution params: {self.execution_params}")
+            self.rootLogger.debug(f"Execution params: {self.execution_params}")
 
     def execute(self, result_object_schema_type, result_object_schema_version):
         # Create Result object

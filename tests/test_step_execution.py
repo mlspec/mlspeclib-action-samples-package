@@ -8,7 +8,6 @@ import datetime
 from mlspeclib import MLObject, MLSchema
 import unittest
 
-sys.path.append(str(Path.cwd()))
 sys.path.append(str(Path.cwd().parent))
 
 from step_execution import StepExecution
@@ -20,7 +19,7 @@ class StepExecutionTester(unittest.TestCase):
     rootLogger = None
 
     def setUp(self):
-        (self.rootLogger, self._buffer) = setupLogger()
+        (self.rootLogger, self._buffer) = setupLogger().get_loggers()
 
     def test_e2e(self):
         MLSchema.populate_registry()

@@ -1,12 +1,12 @@
 # Integration test variables
-INPUT_integration_tests_schemas_dir_name: 'integration/.parameters/schemas'
+INPUT_INTEGRATION_TESTS_SCHEMAS_DIR_NAME: 'integration/.parameters/schemas'
 
 # Variables to hand to the docker container to mock up a real run
-INPUT_container_repo_name: mlspec
-INPUT_container_name: mlspeclib-action-samples-package:latest
-INPUT_parameters_directory: '/src/parameters'
-INPUT_schemas_directory: '/src/parameters/test_schemas'
-INPUT_execution_parameters_raw:
+INPUT_CONTAINER_REPO_NAME: mlspec
+INPUT_CONTAINER_NAME: mlspeclib-action-samples-package:latest
+INPUT_PARAMETERS_DIRECTORY: '/src/parameters'
+INPUT_SCHEMAS_DIRECTORY: '/src/parameters/test_schemas'
+INPUT_EXECUTION_PARAMETERS_RAW:
   schema_version: 999.0.1
   schema_type: package_run
   model_source: /nfs/trained_models/nlp
@@ -17,8 +17,8 @@ INPUT_execution_parameters_raw:
     credentials: AZURE_CREDENTIALS
     docker_username: DOCKERUSERNAME
     docker_password: DOCKERPASSWORD
-INPUT_step_name: 'package'
-INPUT_workflow:
+INPUT_STEP_NAME: 'package'
+INPUT_WORKFLOW:
   schema_type: workflow
   schema_version: 999.0.1
   steps:
@@ -44,6 +44,7 @@ INPUT_workflow:
       output:
         schema_type: training_result
         schema_version: 999.0.1
+      next: package
     package:
       previous: train
       input:
@@ -55,7 +56,7 @@ INPUT_workflow:
       output:
         schema_type: package_result
         schema_version: 999.0.1
-INPUT_input_parameters_raw:
+INPUT_INPUT_PARAMETERS_RAW:
   schema_version: 999.0.1
   schema_type: training_result
   run_id: 6a9a5931-1c1d-47cc-aaf3-ad8b03f70575
