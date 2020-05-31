@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspec/mlspeclib-action-samples-process-data
+          repository: mlspec/mlspeclib-action-samples-package
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
           tag_with_ref: True
