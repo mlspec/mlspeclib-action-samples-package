@@ -14,8 +14,8 @@ jobs:
         id: checkout_repository
         uses: actions/checkout@master
         with:
-          ref: ${{github.ref}}
-
+          submodules: 'recursive'
+  
       - name: Docker Login
         id: docker_login
         uses: Azure/docker-login@v1
@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           # Docker repository to tag the image with
-          repository: mlspec/mlspeclib-action-samples-package
+          repository: mlspec/mlspeclib-action-samples-process-data
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
           tag_with_ref: True

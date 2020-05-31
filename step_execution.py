@@ -1,13 +1,19 @@
-from utils import setupLogger
 from mlspeclib import MLObject
 import yaml as YAML
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path.cwd().parent))
+
+from utils.utils import setupLogger  # noqa
+
 
 # Making this a class in case we want sub functions.
 class StepExecution:
     input_params = {}  # noqa
     execution_params = {}  # noqa
     ml_object = MLObject()  # noqa
-    logger = None  # noqa
+    rootLogger = None  # noqa
 
     def __init__(self, input_params, execution_params):
         self.input_params = input_params
